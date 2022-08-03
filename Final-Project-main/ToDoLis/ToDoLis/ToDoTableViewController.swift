@@ -12,8 +12,9 @@ import CoreData
 class ToDoTableViewController: UITableViewController {
 
     var listOfToDo : [ToDoCD] = []
+   // var dateArray : String = []
     
-     /*func createToDo() -> [ToDoClass] {
+    /*func createToDo() -> [ToDoClass] {
 
          let swiftToDo = ToDoClass()
          swiftToDo.description = "Learn Swift"
@@ -32,12 +33,18 @@ class ToDoTableViewController: UITableViewController {
             if let dataFromCoreData = try? acccessToCoreData.fetch(ToDoCD.fetchRequest())as? [ToDoCD]
             {
                 listOfToDo = dataFromCoreData
+                self.listOfToDo.sort(by: {$0.expirationDateInCD! < $1.expirationDateInCD!})
                 tableView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
+        
+        //let todayDate = "08/03/2022"
+            
+        //if strDate = listOfToDo.
+        
         
         let alert = UIAlertController(title: "Alert", message: "Your food will be expired tomorrow!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "okay", style: .default, handler: nil))
@@ -68,7 +75,7 @@ class ToDoTableViewController: UITableViewController {
                 let dateFormatter = DateFormatter()
                  dateFormatter.dateStyle = DateFormatter.Style.short
                 let strDate = dateFormatter.string(from: (eachToDo.expirationDateInCD)!)
-    
+            
             
             if eachToDo.importantInCD {
                 cell.textLabel?.text = "! " + eachToDo.descriptionInCD!
@@ -79,7 +86,6 @@ class ToDoTableViewController: UITableViewController {
             }
             
         }
-
 
 
         return cell
