@@ -25,7 +25,7 @@ class CompletedToDoViewController: UIViewController {
         toDoDisplay.text = selectedToDo?.descriptionInCD
         
         let dateFormatter = DateFormatter()
-         dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateFormat = "YYYY/MM/dd"
          let strDate = dateFormatter.string(from: (selectedToDo?.expirationDateInCD)!)
          dateDisplay.text = "Expires on " + strDate
     }

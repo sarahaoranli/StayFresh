@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class ToDoTableViewController: UITableViewController {
 
@@ -41,17 +42,6 @@ class ToDoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
-        //let todayDate = "08/03/2022"
-            
-        //if strDate = listOfToDo.
-        
-        
-        let alert = UIAlertController(title: "Alert", message: "Your food will be expired tomorrow!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "okay", style: .default, handler: nil))
-            present(alert, animated: true, completion: {
-              return
-            })
-        
         super.viewDidLoad()
 
        // listOfToDo = createToDo()
@@ -73,9 +63,9 @@ class ToDoTableViewController: UITableViewController {
         
         if let thereIsDescription = eachToDo.descriptionInCD{
                 let dateFormatter = DateFormatter()
-                 dateFormatter.dateStyle = DateFormatter.Style.short
+                dateFormatter.dateFormat = "YYYY/MM/dd"
+            //  dateFormatter.dateStyle = DateFormatter.Style.short
                 let strDate = dateFormatter.string(from: (eachToDo.expirationDateInCD)!)
-            
             
             if eachToDo.importantInCD {
                 cell.textLabel?.text = "! " + eachToDo.descriptionInCD!
@@ -85,11 +75,22 @@ class ToDoTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = "  (Expires on " +  strDate + ")"
             }
             
+        let today = Date()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+            
+        let strToday = dateFormatter.string(from: today)
+            if strToday == strDate {
+                let alert = UIAlertController(title: "Alert", message: "\(eachToDo.descriptionInCD!) will expire tomorrow!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "okay", style: .default, handler: nil))
+                    present(alert, animated: true, completion: {
+                      return
+                    })
+            }
         }
-
 
         return cell
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         getToDos()  
     }
