@@ -19,6 +19,7 @@
 		0CFAF75A24CF4A9100F5721E /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAF75924CF4A9100F5721E /* ToDo.swift */; };
 		0CFAF75C24CF6E5E00F5721E /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAF75B24CF6E5E00F5721E /* AddToDoViewController.swift */; };
 		0CFAF75E24CF736C00F5721E /* CompletedToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAF75D24CF736C00F5721E /* CompletedToDoViewController.swift */; };
+		BDE640B4289C34DF004A8F7F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE640B3289C34DF004A8F7F /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0CFAF75924CF4A9100F5721E /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		0CFAF75B24CF6E5E00F5721E /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		0CFAF75D24CF736C00F5721E /* CompletedToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedToDoViewController.swift; sourceTree = "<group>"; };
+		BDE640B3289C34DF004A8F7F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		0CFAF71824CF42E500F5721E = {
 			isa = PBXGroup;
 			children = (
+				BDE640B3289C34DF004A8F7F /* MapViewController.swift */,
 				0CFAF72324CF42E500F5721E /* ToDoLis */,
 				0CFAF73D24CF42E900F5721E /* ToDoLisTests */,
 				0CFAF74824CF42E900F5721E /* ToDoLisUITests */,
@@ -278,6 +281,7 @@
 				0CFAF72F24CF42E500F5721E /* ToDoLis.xcdatamodeld in Sources */,
 				0CFAF75C24CF6E5E00F5721E /* AddToDoViewController.swift in Sources */,
 				0CFAF72724CF42E500F5721E /* SceneDelegate.swift in Sources */,
+				BDE640B4289C34DF004A8F7F /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

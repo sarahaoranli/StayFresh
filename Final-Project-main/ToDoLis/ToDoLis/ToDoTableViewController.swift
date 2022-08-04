@@ -60,32 +60,43 @@ class ToDoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         let eachToDo = listOfToDo[indexPath.row]
-        
         if let thereIsDescription = eachToDo.descriptionInCD{
-                let dateFormatter = DateFormatter()
+            let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "YYYY/MM/dd"
             //  dateFormatter.dateStyle = DateFormatter.Style.short
-                let strDate = dateFormatter.string(from: (eachToDo.expirationDateInCD)!)
-            
-            if eachToDo.importantInCD {
-                cell.textLabel?.text = "! " + eachToDo.descriptionInCD!
-                cell.detailTextLabel?.text = "  (Expires on " +  strDate + ")"
-            } else {
-                cell.textLabel?.text = eachToDo.descriptionInCD!
-                cell.detailTextLabel?.text = "  (Expires on " +  strDate + ")"
-            }
-            
+            let strDate = dateFormatter.string(from: (eachToDo.expirationDateInCD)!)
         let today = Date()
         dateFormatter.dateFormat = "YYYY/MM/dd"
             
         let strToday = dateFormatter.string(from: today)
             if strToday == strDate {
-                let alert = UIAlertController(title: "Alert", message: "\(eachToDo.descriptionInCD!) will expire tomorrow!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "okay", style: .default, handler: nil))
+                let alert = UIAlertController(title: "Alert", message: "\(eachToDo.descriptionInCD!) is expiring today!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                     present(alert, animated: true, completion: {
                       return
                     })
             }
+        
+       
+            if eachToDo.importantInCD {
+                if strToday > strDate {
+                    cell.textLabel?.text = "! " + eachToDo.descriptionInCD!
+                    cell.detailTextLabel?.text = " !(EXPIRED ON " + strDate + ")!" // Important AND expired
+                }
+                else {
+                    cell.textLabel?.text = "! " + eachToDo.descriptionInCD!
+                    cell.detailTextLabel?.text = "  (Expires on " +  strDate + ")" // Important AND not expired
+                }
+            } else {
+                if strToday > strDate {
+                    cell.textLabel?.text = eachToDo.descriptionInCD!
+                    cell.detailTextLabel?.text = " !(EXPIRED ON " + strDate + ")!" // Not Important AND expired
+                }else{
+                cell.textLabel?.text = eachToDo.descriptionInCD!
+                cell.detailTextLabel?.text = "  (Expires on " +  strDate + ")" //Not Important AND Not Expired
+            }
+            }
+
         }
 
         return cell
